@@ -51,6 +51,13 @@ on enable-low-power
 
     write /sys/module/msm_thermal/core_control/enabled 1
 
+    # Change gpu governor to simple_ondemand and set max clock to 320Mhz
+    write /sys/class/kgsl/kgsl-3d0/devfreq/governor simple_ondemand
+    write /sys/class/kgsl/kgsl-3d0/max_gpuclk 320000000
+
+    # Enable multicore power savings
+    write /sys/devices/system/cpu/sched_mc_power_savings 1
+
 on charger
     write /sys/module/lpm_levels/enable_low_power/l2 4
     write /sys/module/msm_pm/modes/cpu0/power_collapse/suspend_enabled 1
