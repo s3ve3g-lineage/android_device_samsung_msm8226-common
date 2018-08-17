@@ -495,8 +495,7 @@ on boot
     write /proc/sys/net/core/wmem_max  8388608
 
 on charger
-    wait /dev/block/platform/msm_sdcc.1/by-name/system
-    mount ext4 /dev/block/platform/msm_sdcc.1/by-name/system /system ro barrier=1
+    mount_all fstab.qcom
     class_start charger
 
 # Services
